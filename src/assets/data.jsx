@@ -5,11 +5,11 @@
     },
     {
         id: 2,
-        name: "Shamim",
+        name: "Nidhi",
     },
     {
         id: 3,
-        name: "Rahim",
+        name: "Shamim",
     },
     {
         id: 4,
