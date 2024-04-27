@@ -1,9 +1,11 @@
 import React from 'react'
-
+import Navbar from './Navbar'
+import Search from './Search'
 const Home = () => {
   return (
-    <div>
-      Home
+    <div className='flex'>
+      <Navbar/>
+      <Search/>
     </div>
   )
 }
