@@ -5,7 +5,7 @@ import { IoMdSettings } from "react-icons/io";
 
 const Navbar = () => {
   return (
-    <div className="flex flex-col w-20 h-screen bg-black p-4 gap-3">
+    <div className="flex flex-col w-20 min-h-screen  bg-black p-4 gap-3">
     <div>
       <img
         src=""
@@ -15,15 +15,15 @@ const Navbar = () => {
     </div>
 
 
-      <div className="flex items-center text-white hover:text-blue-300">
+      <div className="flex items-center text-white hover:text-blue-300 fixed top-20">
         <FaMessage className="text-xl mr-2" />
       </div>
 
-      <div className="flex items-center text-white hover:text-blue-300">
+      <div className="flex items-center text-white hover:text-blue-300 fixed top-28">
         <CgProfile className="text-xl mr-2" />
       </div>
 
-      <div className="flex items-center text-white hover:text-blue-300">
+      <div className="flex items-center text-white hover:text-blue-300 fixed top-36">
         <IoMdSettings className="text-xl mr-2" />
       </div>
     </div>
