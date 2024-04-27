@@ -43,10 +43,13 @@ const Search = () => {
                 {
                     filterData.length > 0 ? (filterData.map((e) => {
                         return <Card data={e} key={e.id} />
-                    })) : (<h1>No data is here so we show all data</h1>,
-                        data && data.map((e, i) => {
+                    })) : (<>
+                        <h1>No data is here so we show all data</h1>
+                        {data && data.map((e, i) => {
                             return <Card data={e} key={e.id} nodata="No data," />
-                        }))
+                        })}
+                    </>
+                    )
                 }
             </div>
         </div>
@@ -54,3 +57,5 @@ const Search = () => {
 };
 
 export default Search;
+
+
