@@ -1,10 +1,12 @@
 
 import { configureStore } from '@reduxjs/toolkit'
 import chatSlice from './chatSlice'
+import darkSlice from './darkSlice';
 
 const store = configureStore({
     reducer: {
-        chat : chatSlice
+        chat : chatSlice,
+        dark : darkSlice
     }
   })
 

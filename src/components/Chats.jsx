@@ -3,11 +3,13 @@ import { useSelector } from 'react-redux';
 
 const Chats = () => {
   const chatData = useSelector((store) => store.chat);
+  const darkData = useSelector((store)=>store.dark);
+  console.log(darkData)
 
   return (
-    <div className="bg-black w-full p-4">
+    <div className={` ${darkData ==true? ('bg-white w-full p-4') : ('bg-black w-full p-4') }`}>
       
-      <p className="text-white text-center max-w-[30vw] mx-auto border border-solid border-gray-500 rounded-lg p-2">
+      <p className={`${darkData== false ? ('text-white text-center max-w-[30vw] mx-auto border border-solid border-gray-500 rounded-lg p-2') :('text-black text-center max-w-[30vw] mx-auto border border-solid border-gray-500 rounded-lg p-2') }`}>
         {chatData}
       </p>
 
@@ -39,7 +41,7 @@ const Chats = () => {
 
       <input
         type="text"
-        className="fixed bottom-0 mt-1 px-4 py-2 w-full text-black bg-purple-900 border border-purple-800 rounded-lg focus:outline-none"
+        className="fixed bottom-0 mb-3 mr-5 px-4 py-2 w-full text-black bg-purple-900 border border-purple-800 rounded-lg focus:outline-none"
         placeholder="Type your message..."
       />
     </div>

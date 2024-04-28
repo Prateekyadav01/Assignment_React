@@ -3,13 +3,18 @@ import { FaMessage } from "react-icons/fa6";
 import { CgProfile } from "react-icons/cg";
 import { IoMdSettings } from "react-icons/io";
 import { WiMoonAltFull } from "react-icons/wi";
+import { useDispatch } from 'react-redux';
+import { checkState } from '../utils/darkSlice';
 
 const Navbar = () => {
-
+  const dispatch = useDispatch();
   const [darkMode , setDarkMode] = useState(false);
 
   const handleMode = ()=>{
+    
     setDarkMode(!darkMode);
+    dispatch(checkState(!darkMode));
+    
   }
   return (
    <>
@@ -40,9 +45,15 @@ const Navbar = () => {
     </div>
     <div>
     <h1 className='text-white font-bold ml-2'>mode 1</h1>
-      < div className='w-[5vw] ml-4 mb-1 h-[10vh] rounded-xl bg-gray-300'>
+      < div className='w-[3vw] ml-4 mb-1 h-[12vh] rounded-xl bg-gray-300'>
         
-         <WiMoonAltFull className='bg-white h-8 w-full rounded-lg' onClick={handleMode}/>
+         <WiMoonAltFull  className={` top-0 left-0 h-8 w-full rounded-lg cursor-pointer ${
+              darkMode ? ' text-black' : 'bg-gray-300 text-red-600'
+            }`}
+            style={{
+              transition: 'transform 0.3s ease',
+              transform: darkMode ? 'translateY(100%)' : 'translateY(0)'
+            }} onClick={handleMode}/>
        
       </div>
       <h1 className='text-white font-bold ml-2 mt-0'>mode 2</h1>
@@ -55,6 +66,3 @@ const Navbar = () => {
 export default Navbar
 
 
-// .dark-mode {
-//   transform: translateX(calc(100% + 40px));
-// }
