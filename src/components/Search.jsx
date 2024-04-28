@@ -2,14 +2,17 @@
 
 import React, { useState } from "react";
 import Card from "./Card";
-import { data } from "../assets/data"
+import { data ,Light} from "../assets/data"
 import useSearchData from "../utils/useSearchData";
+import { useSelector } from "react-redux";
 
 
 const Search = () => {
     const [search, setSearch] = useState("");
     const [filterData, setFilterData] = useState([]);
+    const selector = useSelector((store)=>store.dark);
 
+    // creating a custom hooks we get the filterData and make our component clean
     useSearchData(search, setFilterData);
 
     const handleAdd = () => {
@@ -41,15 +44,17 @@ const Search = () => {
 
             <div className="bg-gray-800">
                 {
-                    filterData.length > 0 ? (filterData.map((e) => {
-                        return <Card data={e} key={e.id} />
-                    })) : (<>
-                        <h1>No data is here so we show all data</h1>
-                        {data && data.map((e, i) => {
-                            return <Card data={e} key={e.id} nodata="No data," />
-                        })}
-                    </>
-                    )
+                  selector==false ? (  filterData.length > 0 ? (filterData.map((e) => {
+                    return <Card data={e} key={e.id} />
+                })) : (<>
+                    <h1>No data is here so we show all data</h1>
+                    {data && data.map((e, i) => {
+                        return <Card data={e} key={e.id} nodata="No data," />
+                    })}
+                </>
+                )) : ( Light.map((e,i)=>{
+                    return <Card data={e} key={e.id}  />
+                }))
                 }
             </div>
         </div>
