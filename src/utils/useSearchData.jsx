@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
-import {data} from "../assets/data"
+import {data, Light} from "../assets/data"
+import { useSelector } from 'react-redux';
 const useSearchData = (search,setFilterData) => {
+    const selectore = useSelector((store)=>store.dark);
     const filterDataResult = (search) => {
         return data.filter((item) => {
             const lowerCaseSearch = search.toLowerCase();

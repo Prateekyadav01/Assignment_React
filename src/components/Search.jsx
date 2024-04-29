@@ -5,12 +5,15 @@ import Card from "./Card";
 import { data ,Light} from "../assets/data"
 import useSearchData from "../utils/useSearchData";
 import { useSelector } from "react-redux";
+import { FaChevronCircleLeft } from "react-icons/fa";
+import { FaChevronCircleRight } from "react-icons/fa";
 
 
 const Search = () => {
     const [search, setSearch] = useState("");
     const [filterData, setFilterData] = useState([]);
     const selector = useSelector((store)=>store.dark);
+    const [click , setClick] = useState(false);
 
     // creating a custom hooks we get the filterData and make our component clean
     useSearchData(search, setFilterData);
@@ -25,8 +28,18 @@ const Search = () => {
         localStorage.setItem("data", JSON.stringify(data));
         console.log(data);
     }
+
+    const handleHide =()=>{
+        setClick(!click);
+    }
     return (
-        <div className="flex flex-col min-h-screen bg-blue-950">
+        <>
+        {
+            click ? (<div className="bg-black">
+                <FaChevronCircleRight  className="bg-white mt-72" onClick={handleHide}/>
+            </div>) : (<div className="flex flex-col min-h-screen bg-blue-950">
+            <FaChevronCircleLeft onClick={handleHide} className="absolute ml-[280px] top-80 m-4  bg-white"/>
+            
             <div className=" rounded-lg p-4 shadow-lg">
                 <div className="flex border border-gray-600 rounded-lg overflow-hidden">
                     <input
@@ -57,7 +70,9 @@ const Search = () => {
                 }))
                 }
             </div>
-        </div>
+        </div>) 
+        }
+        </>
     );
 };
 

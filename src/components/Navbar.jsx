@@ -5,6 +5,7 @@ import { IoMdSettings } from "react-icons/io";
 import { WiMoonAltFull } from "react-icons/wi";
 import { useDispatch } from 'react-redux';
 import { checkState } from '../utils/darkSlice';
+import react from '../assets/react.svg'
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -22,9 +23,9 @@ const Navbar = () => {
    <div className="flex flex-col w-20 min-h-screen  bg-black p-4 gap-3">
     <div>
       <img
-        src=""
+        src={react}
         alt="Logo"
-        className="h-16 w-auto mb-4"
+        className="h-16 w-[30px] mb-4"
       />
     </div>
 
