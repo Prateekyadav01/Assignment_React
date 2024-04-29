@@ -4,19 +4,30 @@ import { useSelector } from 'react-redux';
 const useSearchData = (search,setFilterData) => {
     const selectore = useSelector((store)=>store.dark);
     const filterDataResult = (search) => {
+       if(!selectore){
         return data.filter((item) => {
-            const lowerCaseSearch = search.toLowerCase();
+            const lowerCaseSearch = search.trim().toLowerCase();
             return (
-                item.name.toLowerCase().includes(lowerCaseSearch) ||
+                item.name.trim().toLowerCase().includes(lowerCaseSearch) ||
                 item.id.toString() === lowerCaseSearch
             );
         });
+       }
+       else{
+        return Light.filter((item) => {
+            const lowerCaseSearch = search.trim().toLowerCase();
+            return (
+                item.name.trim().toLowerCase().includes(lowerCaseSearch) ||
+                item.id.toString() === lowerCaseSearch
+            );
+        });
+       }
     };
 
     useEffect(() => {
         const ans = filterDataResult(search);
         return setFilterData(ans);
-    }, [search]);
+    }, [search,selectore,setFilterData]);
 }
 
 export default useSearchData

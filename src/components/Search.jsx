@@ -23,7 +23,12 @@ const Search = () => {
             id: data.length + 1,
             name: search
         }
+        if(!selector){
         data.push(obj);
+        }
+        else{
+            Light.push(obj);
+        }
         setSearch("");
         localStorage.setItem("data", JSON.stringify(data));
         console.log(data);
@@ -57,17 +62,23 @@ const Search = () => {
 
             <div className="bg-gray-800">
                 {
-                  selector==false ? (  filterData.length > 0 ? (filterData.map((e) => {
+                  selector===false ? (  filterData.length > 0 ? (filterData.map((e) => {
                     return <Card data={e} key={e.id} />
                 })) : (<>
-                    <h1>No data is here so we show all data</h1>
+                    <h1 className="text-white font-bold">No data is here so we show all data</h1>
                     {data && data.map((e, i) => {
-                        return <Card data={e} key={e.id} nodata="No data," />
+                        return <Card data={e} key={e.id}  />
                     })}
                 </>
-                )) : ( Light.map((e,i)=>{
-                    return <Card data={e} key={e.id}  />
-                }))
+                )) : (  filterData.length > 0 ? (filterData.map((e) => {
+                    return <Card data={e} key={e.id} />
+                })) : (<>
+                    <h1 className="text-white font-bold">No data is here so we show all data</h1>
+                    {Light && Light.map((e, i) => {
+                        return <Card data={e} key={e.id} />
+                    })}
+                </>
+                ))
                 }
             </div>
         </div>) 
