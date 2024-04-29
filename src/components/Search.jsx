@@ -37,6 +37,8 @@ const Search = () => {
     const handleHide =()=>{
         setClick(!click);
     }
+    // by using enter keyword
+    // const { handleKeyPress } = useSearchData(setFilterData);
     return (
         <>
         {
@@ -53,6 +55,7 @@ const Search = () => {
                         value={search}
                         className="px-4 py-2 text-white bg-black focus:outline-none w-48 "
                         onChange={(e) => setSearch(e.target.value)}
+                        // onKeyPress={(e) => handleKeyPress(e, search)}
                     />
                     <button onClick={handleAdd} className="px-4 py-2 bg-black text-white border border-red-900 hover:bg-blue-600 hover:text-white focus:outline-none">
                         Add
